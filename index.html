@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blake Edwards | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-slate-200 dark:border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo / Name -->
+            <a href="#hero" class="flex items-center space-x-2 group">
+                <span class="w-9 h-9 rounded-lg bg-brand-600 text-white flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform duration-200">
+                    BE
+                </span>
+                <span class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">
+                    Blake Edwards <span class="text-brand-500 text-xs px-2 py-0.5 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-800 font-mono font-medium hidden sm:inline-block">Student Developer</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">About</a>
+                <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Projects</a>
+                <a href="#skills" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Skills</a>
+                <a href="#leadership" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Experience</a>
+                <a href="#contact" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-3">
+                <button id="themeToggle" aria-label="Toggle theme" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-colors">
+                    <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-lg text-amber-400"></i>
+                </button>
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg text-white bg-brand-600 hover:bg-brand-700 shadow-sm transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-brand-500">
+                    Get in Touch
+                </a>
+                <button id="mobileMenuBtn" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
+            <a href="#leadership" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <section id="hero" class="pt-28 pb-16 md:pt-36 md:pb-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-8 space-y-6 text-left">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-semibold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Junior Developer &bull; University Coding Projects</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Showcasing software engineering projects & technical coursework.
+                </h1>
+
+                <p class="text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                    Hi, I'm <strong class="text-slate-900 dark:text-white font-semibold">Blake Edwards</strong>. Welcome to my project showcase! This portfolio highlights software projects, coursework assignments, and technical experiments created throughout my computer science and software development studies.
+                </p>
+
+                <!-- Quick Highlights -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
+                    <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <div class="text-2xl font-bold text-brand-600 dark:text-brand-500">6+</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Projects</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <div class="text-2xl font-bold text-brand-600 dark:text-brand-500">4+</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Core Tech Stack Categories</div>
+                    </div>
+                    <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm col-span-2 sm:col-span-1">
+                        <div class="text-2xl font-bold text-brand-600 dark:text-brand-500">100%</div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">Customizable Showcase</div>
+                    </div>
+                </div>
+
+                <!-- Call To Actions -->
+                <div class="flex flex-wrap items-center gap-4 pt-4">
+                    <a href="#projects" class="inline-flex items-center px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm transition-all shadow-md hover:shadow-brand-500/20">
+                        Explore Projects <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium text-sm border border-slate-200 dark:border-slate-800 transition-colors">
+                        <i class="fa-brands fa-github text-lg mr-2"></i> GitHub
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium text-sm border border-slate-200 dark:border-slate-800 transition-colors">
+                        <i class="fa-brands fa-linkedin text-lg mr-2"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terminal Card -->
+            <div class="lg:col-span-4">
+                <div class="bg-slate-900 rounded-2xl p-5 shadow-2xl border border-slate-800 text-slate-200 font-mono text-xs sm:text-sm relative overflow-hidden group">
+                    <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+                        <div class="flex space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                        </div>
+                        <span class="text-slate-500 text-[11px]">blake-edwards-terminal</span>
+                    </div>
+                    
+                    <div class="space-y-3 font-mono">
+                        <div>
+                            <span class="text-emerald-400">blake@student-pc:~$</span> <span class="text-slate-100">whoami</span>
+                            <p class="text-slate-400 mt-1 pl-4">"Blake Edwards - Computer Science & Software Student"</p>
+                        </div>
+                        <div>
+                            <span class="text-emerald-400">blake@student-pc:~$</span> <span class="text-slate-100">cat portfolio_info.json</span>
+                            <pre class="text-brand-400 mt-1 pl-4 font-mono text-[11px] leading-relaxed">
+{
+  "developer": "Blake Edwards",
+  "focus": ["Full-Stack", "Systems", "Algorithms"],
+  "status": "Ready to showcase university projects"
+}</pre>
+                        </div>
+                        <div class="pt-2 flex items-center">
+                            <span class="text-emerald-400 mr-2">blake@student-pc:~$</span>
+                            <span class="w-2 h-4 bg-slate-200 animate-pulse inline-block"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 bg-slate-100/70 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 space-y-4 md:space-y-0">
+                <div>
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Coding Project Templates</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm sm:text-base">
+                        Structured templates ready to showcase your university assignments, team projects, and personal code.
+                    </p>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full md:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                    <input type="text" id="projectSearch" placeholder="Search templates or tech..." class="w-full pl-9 pr-4 py-2 text-sm rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500 dark:text-white">
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex flex-wrap gap-2 mb-8" id="filterContainer">
+                <button class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-brand-600 text-white shadow-sm" data-filter="all">All Templates</button>
+                <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-filter="web">Full-Stack Web</button>
+                <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-filter="systems">Systems & C++</button>
+                <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-filter="database">Database / Java</button>
+                <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-filter="python">Python & Algorithms</button>
+                <button class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700" data-filter="hardware">Hardware & Embedded</button>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
+
+                <!-- Template 1: Full-Stack Web App Template -->
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-category="web python" data-tags="Full-Stack, React, Python, REST API">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400">
+                                <i class="fa-solid fa-laptop-code text-lg"></i>
+                            </span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">Capstone / Web Template</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Full-Stack Web App Template
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2 line-clamp-3">
+                            Placeholder for a web application project. Describe your problem statement, application features, user authentication flow, and dynamic data handling here.
+                        </p>
+                        
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Features Placeholder</h4>
+                            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Feature highlight 1 (e.g., Responsive UI dashboard)</li>
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Feature highlight 2 (e.g., RESTful API endpoints & auth)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Node.js</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com" target="_blank" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors">
+                                <i class="fa-brands fa-github mr-1"></i> Repository
+                            </a>
+                            <button onclick="openDemoModal('Full-Stack Web App Template', 'Detailed preview breakdown for your full-stack web project template.', 'https://placehold.co/800x450/0f172a/0284c7?text=Web+App+Template+Preview')" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white transition-colors">
+                                <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 2: System Architecture / Low-Level C++ -->
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-category="systems" data-tags="C++, Systems, Memory Management, Linux">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                                <i class="fa-solid fa-microchip text-lg"></i>
+                            </span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">Systems / C++ Template</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Systems Architecture Project
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2 line-clamp-3">
+                            Placeholder for low-level systems coursework, multi-threading, custom compilers, memory management, or OS kernel assignments.
+                        </p>
+                        
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Features Placeholder</h4>
+                            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Custom memory allocation or cache design</li>
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Benchmarking metrics & Valgrind verification</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">C++17</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Linux</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">GDB</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Makefile</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com" target="_blank" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors">
+                                <i class="fa-brands fa-github mr-1"></i> Repository
+                            </a>
+                            <button onclick="openDemoModal('Systems Architecture Project', 'Execution terminal output logs and performance metrics.', 'https://placehold.co/800x450/0f172a/a855f7?text=Systems+Project+Logs')" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white transition-colors">
+                                <i class="fa-solid fa-terminal mr-1"></i> Output
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 3: Database & Java Enterprise Template -->
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-category="database" data-tags="Java, SQL, Database, OOP">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                                <i class="fa-solid fa-database text-lg"></i>
+                            </span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">Database / Java Template</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Database Management Template
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2 line-clamp-3">
+                            Placeholder for relational database design, SQL query optimizations, object-oriented Java applications, or inventory systems.
+                        </p>
+                        
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Features Placeholder</h4>
+                            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> ER Diagram modeling & relational schema design</li>
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Complex SQL transactions & parameterized queries</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Java</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">PostgreSQL</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">JDBC</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">SQL</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com" target="_blank" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors">
+                                <i class="fa-brands fa-github mr-1"></i> Repository
+                            </a>
+                            <button onclick="openDemoModal('Database Project Template', 'Database ERD diagram and sample queries showcase.', 'https://placehold.co/800x450/0f172a/d97706?text=Database+Schema+Preview')" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white transition-colors">
+                                <i class="fa-solid fa-diagram-project mr-1"></i> Schema
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 4: Algorithm & Pipeline Project -->
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-category="python" data-tags="Algorithm, Python, Data Structures, Pipeline">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
+                                <i class="fa-solid fa-chart-diagram text-lg"></i>
+                            </span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">Algorithm / Python Template</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Algorithm / Data Pipeline Template
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2 line-clamp-3">
+                            Placeholder for data structures implementations, automated data pipelines, sorting visualizers, or machine learning model scripts.
+                        </p>
+                        
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Features Placeholder</h4>
+                            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Big-O time and space complexity evaluation</li>
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Automated data parsing and visualization</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python 3</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">NumPy</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Data Structures</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com" target="_blank" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors">
+                                <i class="fa-brands fa-github mr-1"></i> Repository
+                            </a>
+                            <button onclick="openDemoModal('Algorithm Project Template', 'Visualization and execution steps for data pipeline.', 'https://placehold.co/800x450/0f172a/0284c7?text=Data+Pipeline+Visualizer')" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white transition-colors">
+                                <i class="fa-solid fa-play mr-1"></i> Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 5: Hardware & Embedded Project -->
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-category="hardware systems" data-tags="Robotics, Embedded, Hardware, Arduino, Microcontroller">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                                <i class="fa-solid fa-robot text-lg"></i>
+                            </span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">Hardware / IoT Template</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Robotics / Hardware Interface
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2 line-clamp-3">
+                            Placeholder for embedded C/C++ projects, Arduino/ESP32 microcontrollers, IoT sensors, or robotics hardware labs.
+                        </p>
+                        
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Features Placeholder</h4>
+                            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Real-time sensor reading and feedback loops</li>
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Wi-Fi / Bluetooth telemetry communication</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">C++ / Embedded</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Arduino</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">ESP32</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com" target="_blank" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors">
+                                <i class="fa-brands fa-github mr-1"></i> Repository
+                            </a>
+                            <button onclick="openDemoModal('Hardware Interface Template', 'Wiring schematic and demonstration media.', 'https://placehold.co/800x450/0f172a/10b981?text=Hardware+Lab+Demo')" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white transition-colors">
+                                <i class="fa-solid fa-film mr-1"></i> Media
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Template 6: General Software Application Template -->
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group" data-category="web python java" data-tags="CLI, Scripting, Automation, Utility">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="p-2.5 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400">
+                                <i class="fa-solid fa-gears text-lg"></i>
+                            </span>
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">Utility / Script Template</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                            Automation & Utility Tool Template
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2 line-clamp-3">
+                            Placeholder for command-line utilities, web scrapers, task automation scripts, or developer workflow tools.
+                        </p>
+                        
+                        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Key Features Placeholder</h4>
+                            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Streamlined CLI arguments & flag parsing</li>
+                                <li><i class="fa-solid fa-check text-emerald-500 mr-1.5"></i> Automated batch processing & report generation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-2">
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Python</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Bash</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">REST API</span>
+                        </div>
+
+                        <div class="flex items-center space-x-3">
+                            <a href="https://github.com" target="_blank" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors">
+                                <i class="fa-brands fa-github mr-1"></i> Repository
+                            </a>
+                            <button onclick="openDemoModal('Automation Utility Template', 'Terminal usage script guide.', 'https://placehold.co/800x450/0f172a/f43f5e?text=CLI+Tool+Usage+Demo')" class="flex-1 py-2 px-3 text-center rounded-lg text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white transition-colors">
+                                <i class="fa-solid fa-code mr-1"></i> Usage
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="noResults" class="hidden text-center py-12">
+                <i class="fa-solid fa-folder-open text-4xl text-slate-400 mb-3"></i>
+                <h3 class="text-lg font-medium text-slate-700 dark:text-slate-300">No project templates match your query.</h3>
+                <p class="text-sm text-slate-500 mt-1">Try resetting the filter buttons or search term.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-left mb-12">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Technical Skills & Toolkit</h2>
+            <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm sm:text-base">
+                Core competencies developed across university computer science coursework and independent projects.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Category 1 -->
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="p-2.5 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                        <i class="fa-solid fa-code text-lg"></i>
+                    </span>
+                    <h3 class="font-bold text-slate-900 dark:text-white">Languages</h3>
+                </div>
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                            <span>Python</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-600 h-full rounded-full" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                            <span>Java / OOP</span>
+                            <span>Proficient</span>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-600 h-full rounded-full" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                            <span>C / C++</span>
+                            <span>Proficient</span>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-600 h-full rounded-full" style="width: 78%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                            <span>JavaScript / HTML / CSS</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-600 h-full rounded-full" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2 -->
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                        <i class="fa-solid fa-layer-group text-lg"></i>
+                    </span>
+                    <h3 class="font-bold text-slate-900 dark:text-white">Web & Frameworks</h3>
+                </div>
+                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> React.js / Frontend Components</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> Django / Flask APIs</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> Node.js & Express</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> RESTful API Design</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> Tailwind CSS & UI Styling</li>
+                </ul>
+            </div>
+
+            <!-- Category 3 -->
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="p-2.5 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                        <i class="fa-solid fa-screwdriver-wrench text-lg"></i>
+                    </span>
+                    <h3 class="font-bold text-slate-900 dark:text-white">Tools & Systems</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Git & GitHub</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Linux / Bash</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">VS Code</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Docker (Basic)</span>
+                    <span class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">Postman API</span>
+                </div>
+            </div>
+
+            <!-- Category 4 -->
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </span>
+                    <h3 class="font-bold text-slate-900 dark:text-white">CS Fundamentals</h3>
+                </div>
+                <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> Data Structures & Algorithms</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> Object-Oriented Programming</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> Database Design & SQL</li>
+                    <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-2 text-xs"></i> Operating Systems Concepts</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="leadership" class="py-16 bg-slate-100/70 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-left mb-12">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Academic & Project Experience</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm sm:text-base">
+                    Key milestones, coursework achievements, and team leadership roles.
+                </p>
+            </div>
+
+            <div class="relative border-l-2 border-slate-300 dark:border-slate-700 ml-4 md:ml-8 space-y-10">
+
+                <div class="relative pl-6 md:pl-10 group">
+                    <span class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs shadow-md">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </span>
+
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Computer Science / Software Student</h3>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 w-max">
+                                Expected Graduation: 2027
+                            </span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">University Studies</p>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            <li>Relevant Coursework: Data Structures & Algorithms, Systems Programming, Database Systems, Web Development.</li>
+                            <li>Collaborated with student peers on software development projects using Git and Agile team practices.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative pl-6 md:pl-10 group">
+                    <span class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-slate-700 text-white flex items-center justify-center text-xs shadow-md">
+                        <i class="fa-solid fa-people-group"></i>
+                    </span>
+
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">CS Student Organization Member / Project Lead</h3>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 w-max">
+                                Ongoing
+                            </span>
+                        </div>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-4">Campus Developer Club</p>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            <li>Participated in coding workshops, hackathons, and technical peer review sessions.</li>
+                            <li>Helped organize peer learning sessions to assist newer students with introductory programming courses.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <div class="lg:col-span-5 space-y-6">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Get in Touch</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+                    Interested in discussing software projects or potential internship and employment opportunities? Feel free to send a message or connect directly!
+                </p>
+
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center space-x-3">
+                            <span class="p-2 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-400">
+                                <i class="fa-regular fa-envelope text-lg"></i>
+                            </span>
+                            <div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Direct Email</p>
+                                <p class="text-sm font-semibold text-slate-800 dark:text-slate-200" id="emailText">BlakeEdwards@CalLutheran.edu</p>
+                            </div>
+                        </div>
+                        <button onclick="copyEmail()" id="copyBtn" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-brand-600 hover:text-white dark:hover:bg-brand-600 text-slate-700 dark:text-slate-300 transition-colors">
+                            Copy
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="https://github.com" target="_blank" class="flex items-center p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition-all group">
+                            <i class="fa-brands fa-github text-xl text-slate-700 dark:text-slate-300 group-hover:text-brand-600 dark:group-hover:text-brand-400 mr-3"></i>
+                            <div>
+                                <p class="text-xs text-slate-500">GitHub</p>
+                                <p class="text-xs font-bold text-slate-800 dark:text-slate-200">@Blake019</p>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="flex items-center p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition-all group">
+                            <i class="fa-brands fa-linkedin text-xl text-slate-700 dark:text-slate-300 group-hover:text-brand-600 dark:group-hover:text-brand-400 mr-3"></i>
+                            <div>
+                                <p class="text-xs text-slate-500">LinkedIn</p>
+                                <p class="text-xs font-bold text-slate-800 dark:text-slate-200">/in/blake-edwards-867356221</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="lg:col-span-7 bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="contact-name" class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1.5">Your Name</label>
+                            <input type="text" id="contact-name" required placeholder="Name" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                        <div>
+                            <label for="contact-email" class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1.5">Your Email</label>
+                            <input type="email" id="contact-email" required placeholder="email@example.com" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="contact-subject" class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1.5">Subject</label>
+                        <input type="text" id="contact-subject" required placeholder="Project Inquiry / Opportunity" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <div>
+                        <label for="contact-message" class="block text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-1.5">Message</label>
+                        <textarea id="contact-message" rows="4" required placeholder="Hi Blake, I viewed your project portfolio..." class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 px-6 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm transition-all shadow-md">
+                        Send Message <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>
+                    </button>
+                    
+                    <div id="formStatus" class="hidden text-center text-xs font-semibold p-3 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                        Thank you! Your message submission placeholder has been triggered.
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 gap-4">
+            <p>&copy; Blake Edwards Portfolio Template. Built with HTML & Tailwind CSS.</p>
+            <div class="flex items-center space-x-6">
+                <a href="#hero" class="hover:text-brand-500 transition-colors">Back to top <i class="fa-solid fa-arrow-up ml-1"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="demoModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 max-w-2xl w-full p-6 shadow-2xl relative animate-fade-in">
+            <button onclick="closeDemoModal()" aria-label="Close modal" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 id="modalTitle" class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Project Preview Template</h3>
+            <p id="modalDesc" class="text-sm text-slate-600 dark:text-slate-400 mb-4"></p>
+            <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 mb-6 bg-slate-950">
+                <img id="modalImg" src="" alt="Project Preview Placeholder" class="w-full h-auto max-h-80 object-cover">
+            </div>
+            <div class="flex justify-end space-x-3">
+                <button onclick="closeDemoModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200">
+                    Close Preview
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // System / Theme Preference Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+
+        // Mobile Nav Drawer Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Filtering Logic for Project Templates
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+        const searchInput = document.getElementById('projectSearch');
+        const noResults = document.getElementById('noResults');
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-sm');
+                    b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                });
+                btn.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-sm');
+                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+
+                currentFilter = btn.getAttribute('data-filter');
+                filterProjects();
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value.toLowerCase().trim();
+            filterProjects();
+        });
+
+        function filterProjects() {
+            let visibleCount = 0;
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const tags = card.getAttribute('data-tags').toLowerCase();
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+
+                const matchesFilter = (currentFilter === 'all') || category.includes(currentFilter);
+                const matchesSearch = title.includes(currentSearch) || desc.includes(currentSearch) || tags.includes(currentSearch);
+
+                if (matchesFilter && matchesSearch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        // Clipboard Copy Helper
+        function copyEmail() {
+            const emailText = document.getElementById('emailText').innerText;
+            const copyBtn = document.getElementById('copyBtn');
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = emailText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            copyBtn.innerText = 'Copied!';
+            copyBtn.classList.add('bg-emerald-600', 'text-white');
+            
+            setTimeout(() => {
+                copyBtn.innerText = 'Copy';
+                copyBtn.classList.remove('bg-emerald-600', 'text-white');
+            }, 2000);
+        }
+
+        // Demo Modal Dialog functions
+        const demoModal = document.getElementById('demoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalImg = document.getElementById('modalImg');
+
+        function openDemoModal(title, description, imageSrc) {
+            modalTitle.innerText = title;
+            modalDesc.innerText = description;
+            modalImg.src = imageSrc;
+            demoModal.classList.remove('hidden');
+        }
+
+        function closeDemoModal() {
+            demoModal.classList.add('hidden');
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const formStatus = document.getElementById('formStatus');
+            formStatus.classList.remove('hidden');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+                formStatus.classList.add('hidden');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
